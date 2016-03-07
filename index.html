@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.5.1/lodash.js"></script> -->
     <title>Chatti Kathies' Chattanooga Choo Choo App</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <meta charset="UTF-8">
@@ -8,11 +9,22 @@
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
   </head>
   <body>
+
     <div class="chatBox">
-      <input id="chatField" type="text" name="chatInput" placeholder="yo!">
+        <ul>
+          <li v-for="inputMsg in inputMsgs">
+            <div>{{ inputMsg.text }}</div>
+            <!-- <button v-on:click="removeTodo($index)">X</button> -->
+          </li>
+        </ul>
+      <input v-model="newChatMsg" v-on:keyup.enter="processMsg" id="chatField" type="text" name="chatInput" placeholder="yo!">
     </div>
+
+    <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.17/vue.min.js"></script> -->
+    <script src="http://cdn.jsdelivr.net/vue/1.0.17/vue.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="assets/js/app.js"></script>
+    <script src="assets/js/chat_functions/jokes.js"></script>
   </body>
 </html>

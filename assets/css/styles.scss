@@ -1,8 +1,9 @@
 $fontSize: 100px;
+$fontSizeInput: 25px;
 $fontFamily: "Montserrat", sans-serif;
 
 body {
-  font:{
+  font: {
     size: $fontSize;
     family: $fontFamily;
   }
@@ -15,4 +16,5 @@ body {
   width: 100%;
   height: 40px;
   border: solid 2px red;
+  font-size: $fontSizeInput;
 }
