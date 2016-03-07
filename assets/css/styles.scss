@@ -1,0 +1,18 @@
+$fontSize: 100px;
+$fontFamily: "Montserrat", sans-serif;
+
+body {
+  font:{
+    size: $fontSize;
+    family: $fontFamily;
+  }
+}
+
+#chatField {
+  position:fixed;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 40px;
+  border: solid 2px red;
+}
