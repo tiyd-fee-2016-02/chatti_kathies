@@ -1,6 +1,6 @@
-
-
 function getJokes() {
+
+
 
   var str = "Yes!!!";
 
@@ -12,22 +12,25 @@ function getJokes() {
   //               "&APPID=82f61d5df7730f4b96d58ed8e8aa6b63";
 
 // Broken API URLs
-var myUrl = "http://tambal.azurewebsites.net/joke/random";
+  var myUrl = "http://tambal.azurewebsites.net/joke/random";
 // var myUrl = "https://getpuns.herokuapp.com/api/random";
 
-$.ajax({
-    beforeSend: function(request) {
-        // request.setRequestHeader("Access-Control-Allow-Origin", "*");
-        request.setRequestHeader("Accept", "application/json");
-    },
-    crossDomain: true,
-    dataType: "json",
-    url: myUrl,
-    success: function(data) {
-        //Your code
-    console.log(data);
-    }
-});
+  // $.ajax({
+  //     beforeSend: function(request) {
+  //         // request.setRequestHeader("Access-Control-Allow-Origin", "*");
+  //         request.setRequestHeader("Accept", "application/json");
+  //     },
+  //     //jeremy's public IP address: 172.56.4.224
+  //     // header: "Access-Control-Allow-Origin: http://localhost:9000",
+  //     // Access-Control-Allow-Origin: http://localhost:3000
+  //     crossDomain: true,
+  //     dataType: "json",
+  //     url: myUrl,
+  //     success: function(data) {
+  //         //Your code
+  //     console.log(data);
+  //     }
+  // });
 
   // $.getJSON((url), function (data) {
 
@@ -39,8 +42,6 @@ $.ajax({
   return str;
 
 }
-
-
 
 // curl --get --include 'http://tambal.azurewebsites.net/joke/random' \
 //   -H 'Accept: application/json'
