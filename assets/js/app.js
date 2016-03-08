@@ -15,7 +15,8 @@ console.log(getJokes());
       processMsg: function () {
         var text = this.newChatMsg.trim()
         if (text) {
-          this.inputMsgs.push({ text: text })
+
+          this.inputMsgs.push({ text: getJokes() })
           this.newChatMsg = ''
         }
       }

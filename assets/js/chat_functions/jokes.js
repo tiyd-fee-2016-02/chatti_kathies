@@ -15,29 +15,29 @@ function getJokes() {
 var myUrl = "http://tambal.azurewebsites.net/joke/random";
 // var myUrl = "https://getpuns.herokuapp.com/api/random";
 
-$.ajax({
-    beforeSend: function(request) {
-        // request.setRequestHeader("Access-Control-Allow-Origin", "*");
-        request.setRequestHeader("Accept", "application/json");
-    },
-    crossDomain: true,
-    dataType: "json",
-    url: myUrl,
-    success: function(data) {
-        //Your code
-    console.log(data);
-    }
-});
+// $.ajax({
+//     beforeSend: function(request) {
+//         request.setRequestHeader("Access-Control-Allow-Origin", "*");
+//         request.setRequestHeader("Origin", "");
+//         request.setRequestHeader("Accept", "application/json");
+//     },
+//     crossDomain: true,
+//     dataType: "json",
+//     url: myUrl,
+//     success: function(data) {
+//         //Your code
+//     console.log(data);
+//     }
+// });
 
-  // $.getJSON((url), function (data) {
-
-    // console.log(data.joke);
-    // console.log(data);
-
-  // });   end JSON call
+  // $.getJSON((myUrl), function (data) {
+  //
+  //   console.log(data.joke);
+  //   console.log(data);
+  //
+  // });    end JSON call
 
   return str;
-
 }
 
 
