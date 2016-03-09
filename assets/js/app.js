@@ -18,16 +18,18 @@ console.log(getJokes());
         if (textArray) {
           switch (textArray[0]) {
             case ("@jokes"):
-              this.inputMsgs.push({ text: getJokes() });
+              this.inputMsgs.push({ text: "You asked for a joke!" }, { text: getJokes() });
               this.newChatMsg = '';
             break;
             case ("@piglatin"):
-              this.inputMsgs.push({ text: pigLatein(textArray[1]) });
+              textArray.shift();
+              console.log(textArray);
+              this.inputMsgs.push({ text: "Okay. Erehay isay omesay Iglay Atinpay" }, { text: pigLatein(textArray.join(" ")) });
               this.newChatMsg = '';
             break;
             default:
-              this.inputMsgs.push({ text: getJokes() })
-              this.newChatMsg = ''
+              this.inputMsgs.push({ text: text });
+              this.newChatMsg = '';
           }
         }
       }
