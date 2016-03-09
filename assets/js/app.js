@@ -27,6 +27,10 @@ $(function () {
           case("@telephone"):
             textArray.shift();
             $(".chatList").append('<li class="botText"><div>Time to play Telephone. You typed in "'+textArray.join(" ")+'"</div></li>');
+            translate(textArray.join(" "));
+            setTimeout(function() {
+              console.log($(".frenchTrans").text());
+            }, 2000);  
             this.value = '';
             break;
           default:

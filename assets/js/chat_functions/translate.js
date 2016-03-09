@@ -6,43 +6,43 @@ function translate(toTranslate){
 
 var telString;
 
-  $.ajax({
-		url: 'http://www.frengly.com/',
-		data: {
-			src: 'en',
-			dest: 'fr',
-			text: toTranslate,
-			outformat: 'json',
-			email: 'smithjeremym@gmail.com',
-			password: 'password'
-		},
-		success: function(data){
+$.ajax({
+	url: 'http://www.frengly.com/',
+	data: {
+		src: 'en',
+		dest: 'fr',
+		text: toTranslate,
+		outformat: 'json',
+		email: 'smithjeremym@gmail.com',
+		password: 'password'
+	},
+	success: function(data){
+    console.log(data.translation);
+    telString = data.translation;
+    $(".chatList").append('<li class="botText frenchTrans"><div>'+data.translation+'</div></li>');
+	},
+	error: function (errormessage) {
+		return "We couldn't translate that for you. Excusez-moi!";
+	}
+});
 
-			telString = data.translation;
-      console.log(telString);
-      $.ajax({
-    		url: 'http://www.frengly.com/',
-    		data: {
-    			src: 'fr',
-    			dest: 'de',
-    			text: telString,
-    			outformat: 'json',
-    			email: 'smithjeremym@gmail.com',
-    			password: 'password'
-    		},
-    		success: function(data){
-    			telString = data.translation;
-          console.log(telString);
-    		},
-    		error: function (errormessage) {
-    			return "We couldn't translate that for you. Es tut uns Leid!";
-    		}
-    	});
-		},
-		error: function (errormessage) {
-			return "We couldn't translate that for you. Excusez-moi!";
-		}
-	});
+// $.ajax({
+//   url: 'http://www.frengly.com/',
+//   data: {
+//     src: 'fr',
+//     dest: 'de',
+//     text: telString,
+//     outformat: 'json',
+//     email: 'smithjeremym@gmail.com',
+//     password: 'password'
+//   },
+//   success: function(data){
+//     console.log(data.translation);
+//   },
+//   error: function (errormessage) {
+//     return "We couldn't translate that for you. Es tut uns Leid!";
+//   }
+// });
 
   // console.log(telString);
 
