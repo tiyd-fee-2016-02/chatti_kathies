@@ -19,7 +19,7 @@ function getJokes(str) {
         "      <div>" + data.value.joke + "</div>" +
         "    </li>";
 
-        $(".chatBox ul").append(htmlStr);
+      $(".chatList").append(htmlStr);
     }
     // console.log("jokeText => " + jokeText);
     // return jokeText;

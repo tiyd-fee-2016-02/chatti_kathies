@@ -1,104 +1,40 @@
 $(function () {
   'use strict';
-
-// console.log(getJokes());
-
-// var jokeText = "";
-
-  new Vue({
-    el: '.chatBox',
-    data: {
-      newChatMsg: '',
-      inputMsgs: [
-        // { text: 'Add some text' }
-      ]
-    },
-    methods: {
-      processMsg: function () {
-        var text = this.newChatMsg.trim();
-        var textArray = text.split(" ");
-        if (textArray) {
-          switch (textArray[0]) {
-            case ("@joke"):
-              this.inputMsgs.push({ text: "You asked for a joke!" });
-              this.newChatMsg = '';
-              getJokes();
+  $('#chatField').on("keypress", function (e) {
+    if(event.which === 13) {
+      var textArray = this.value.split(" ");
+      // console.log(textArray);
+      if (textArray) {
+        switch (textArray[0]) {
+          case ("@joke"):
+            $(".chatList").append('<li class="botText"><div>You asked for a joke!</div></li>');
+            getJokes();
+            this.value = '';
+          break;
+          case ("@piglatin"):
+            textArray.shift();
+            console.log(textArray);
+            $(".chatList").append('<li class="userText"><div>'+textArray.join(" ")+'</div></li>');
+            $(".chatList").append('<li class="botText"><div>Okay. Erehay isyay omesay Igpay Atinlay</div></li>');
+            pigLatein(textArray.join(" "));
+            this.value = '';
+          break;
+          case ("@weather"):
+            $(".chatList").append('<li class="botText"><div>You asked for the weather!</div></li>');
+            getWeather();
+            this.value = '';
+          break;
+          case("@telephone"):
+            textArray.shift();
+            $(".chatList").append('<li class="botText"><div>Time to play Telephone. You typed in "'+textArray.join(" ")+'"</div></li>');
+            this.value = '';
             break;
-            case ("@piglatin"):
-              textArray.shift();
-              console.log(textArray);
-              this.inputMsgs.push({ text: "Okay. Erehay isyay omesay Igpay Atinlay" }, { text: pigLatein(textArray.join(" ")) });
-              this.newChatMsg = '';
-            break;
-            case ("@weather"):
-              this.inputMsgs.push({ text: "You asked for the weather!" });
-              this.newChatMsg = '';
-              getWeather();
-            break;
-            case("@telephone"):
-              textArray.shift();
-              this.inputMsgs.push({ text: 'Time to play Telephone. You typed in ' + textArray.join(" ") + '.'}, { text: translate(textArray.join(" ")) });
-              this.newChatMsg = '';
-              break;
-            default:
-              this.inputMsgs.push({ text: "Try again!  I don't understand." });
-              this.newChatMsg = '';
-          }
+          default:
+            $(".chatList").append('<li class="userText"><div>'+textArray.join(" ")+'</div></li>');
+            $(".chatList").append("<li class='botText'><div>What?!?  I don't understand!</div></li>");
+            this.value = '';
         }
       }
-      //other methods will call our functions contained in separate files, like getJokes()
     }
   })
-
 });  // End of file.
-
-
-
-// $(function () {
-//   'use strict';
-//
-// $("ul").append("<li>"+$(getWeather())+"</li>");
-//
-//   new Vue({
-//     el: '.chatBox',
-//     data: {
-//       newChatMsg: '',
-//       inputMsgs: [
-//         // { text: 'Add some text' }
-//       ]
-//     },
-//     methods: {
-//       processMsg: function () {
-//         var text = this.newChatMsg.trim()
-//         var textArray = text.split(" ")
-//         if (textArray.length === 0) {
-//           textArray[0] = text
-//         }
-//         if (textArray) {
-//           // switch (textArray[0]) {
-//             // case ("@joke"):
-//               // console.log("switch")
-//               console.log(getWeather())
-//               this.inputMsgs.push({ text: getWeather() })
-//               this.newChatMsg = ''
-//             // break
-//             // case ("@piglatin"):
-//             //   this.inputMsgs.push({ text: pigLatein(textArray[1]) })
-//             //   this.newChatMsg = ''
-//             // break
-//             // case ("@weather"):
-//             //   console.log(getWeather());
-//             //   this.inputMsgs.push({ text: getWeather() })
-//             //   this.newChatMsg = ''
-//             // break
-//             // default:
-//             //   this.inputMsgs.push({ text: 'What do you mean?' })
-//             //   this.newChatMsg = ''
-//           // }
-//         }
-//       }
-//       //other methods will call our functions contained in separate files, like getJokes()
-//     }
-//   })
-//
-// });  // End of file.

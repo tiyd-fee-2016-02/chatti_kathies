@@ -25,5 +25,6 @@ function pigLatein(str){
         }
     }
     }
-    return pigArray.join(" ");
+    $(".chatList").append('<li class="botText"><div>'+pigArray.join(" ")+'</div></li>');
+    // return pigArray.join(" ");
 }

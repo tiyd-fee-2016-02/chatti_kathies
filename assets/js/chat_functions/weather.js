@@ -50,7 +50,7 @@ function getWeather() {
     console.log(weatherText);
 
     var htmlStr =
-      "    <li>" +
+      "    <li class='botText'>" +
       "      <div>The current temperature is " + weatherText + ".</div>" +
       "    </li>";
 
