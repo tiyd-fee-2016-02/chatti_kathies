@@ -2,6 +2,10 @@ function translate(toTranslate){
 
 // this page is the reference to this API: http://www.frengly.com/controller?action=forum#!/api
 
+// here's what I want to do with this - run an English string through mutiple translators until eventually spitting out a multiple translated English string. Call the command "Telephone"
+
+var telString;
+
   $.ajax({
 		url: 'http://www.frengly.com/',
 		data: {
@@ -13,10 +17,118 @@ function translate(toTranslate){
 			password: 'password'
 		},
 		success: function(data){
-			return data.translation;
+			telString = data.translation;
 		},
 		error: function (errormessage) {
-			return "We couldn't translate that for you. Es tut uns Leid!"
+			return "We couldn't translate that for you. Excusez-moi!";
+		}
+	});
+
+  $.ajax({
+		url: 'http://www.frengly.com/',
+		data: {
+			src: 'fr',
+			dest: 'de',
+			text: telString,
+			outformat: 'json',
+			email: 'smithjeremym@gmail.com',
+			password: 'password'
+		},
+		success: function(data){
+			telString = data.translation;
+		},
+		error: function (errormessage) {
+			return "We couldn't translate that for you. Es tut uns Leid!";
+		}
+	});
+
+  $.ajax({
+		url: 'http://www.frengly.com/',
+		data: {
+			src: 'de',
+			dest: 'es',
+			text: telString,
+			outformat: 'json',
+			email: 'smithjeremym@gmail.com',
+			password: 'password'
+		},
+		success: function(data){
+			telString = data.translation;
+		},
+		error: function (errormessage) {
+			return "We couldn't translate that for you. Excusez-moi!";
+		}
+	});
+
+  $.ajax({
+		url: 'http://www.frengly.com/',
+		data: {
+			src: 'es',
+			dest: 'zhCN',
+			text: telString,
+			outformat: 'json',
+			email: 'smithjeremym@gmail.com',
+			password: 'password'
+		},
+		success: function(data){
+			telString = data.translation;
+		},
+		error: function (errormessage) {
+			return "We couldn't translate that for you. Es tut uns Leid!";
+		}
+	});
+
+  $.ajax({
+		url: 'http://www.frengly.com/',
+		data: {
+			src: 'zhCN',
+			dest: 'hu',
+			text: telString,
+			outformat: 'json',
+			email: 'smithjeremym@gmail.com',
+			password: 'password'
+		},
+		success: function(data){
+			telString = data.translation;
+		},
+		error: function (errormessage) {
+			return "We couldn't translate that for you. Excusez-moi!";
+		}
+	});
+
+  $.ajax({
+		url: 'http://www.frengly.com/',
+		data: {
+			src: 'hu',
+			dest: 'ru',
+			text: telString,
+			outformat: 'json',
+			email: 'smithjeremym@gmail.com',
+			password: 'password'
+		},
+		success: function(data){
+			telString = data.translation;
+		},
+		error: function (errormessage) {
+			return "We couldn't translate that for you. Es tut uns Leid!";
+		}
+	});
+
+  $.ajax({
+		url: 'http://www.frengly.com/',
+		data: {
+			src: 'ru',
+			dest: 'en',
+			text: telString,
+			outformat: 'json',
+			email: 'smithjeremym@gmail.com',
+			password: 'password'
+		},
+		success: function(data){
+			telString = data.translation;
+		},
+		error: function (errormessage) {
+			return "We couldn't translate that for you. Sorry!";
 		}
 	});
 

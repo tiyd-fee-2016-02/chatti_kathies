@@ -24,7 +24,7 @@ console.log(getJokes());
             case ("@piglatin"):
               textArray.shift();
               console.log(textArray);
-              this.inputMsgs.push({ text: "Okay. Erehay isay omesay Iglay Atinpay" }, { text: pigLatein(textArray.join(" ")) });
+              this.inputMsgs.push({ text: "Okay. Erehay isyay omesay Igpay Atinlay" }, { text: pigLatein(textArray.join(" ")) });
               this.newChatMsg = '';
             break;
             default:
