@@ -1,6 +1,6 @@
 function getWeather() {
 
-  var weatherText = "123";
+  var weatherText = "";
 
   var apiURL = "http://api.openweathermap.org/data/2.5/forecast/daily?" +
                   "id=4464368" +    // Durham, NC, US
@@ -48,6 +48,14 @@ function getWeather() {
 
     weatherText = parseInt(dayTemp.split(".")[1], 10) + "&deg;F";
     console.log(weatherText);
-    return weatherText;
+
+    var htmlStr =
+      "    <li>" +
+      "      <div>The current temperature is " + weatherText + ".</div>" +
+      "    </li>";
+
+      $(".chatBox ul").append(htmlStr);
+
+    // return weatherText;
   });   // end JSON
 }

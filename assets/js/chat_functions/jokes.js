@@ -1,39 +1,48 @@
 function getJokes(str) {
 
     // var jokeText = "xyz";
-    jokeText = "xyz";
+    // jokeText = "xyz";
 
     var myUrl = "http://api.icndb.com/jokes/random";
 
-    // $.getJSON(myUrl, getInfo);
-    //
-    // function getInfo(data) {
-    //   console.log("data => " + data);
-    //   console.log("data.value.joke => " + data.value.joke);
-    //   jokeText = data.value.joke;
-    //   console.log("jokeText => " + jokeText);
-    //   return jokeText = data.value.joke;
-    // }
+    $.getJSON(myUrl, getInfo);
+
+    function getInfo(data) {
+      // console.log("data => " + data);
+      console.log("data.value.joke => " + data.value.joke);
+      // jokeText = data.value.joke;
+      // console.log("jokeText => " + jokeText);
+      // return jokeText = data.value.joke;
+
+      var htmlStr =
+        "    <li>" +
+        "      <div>" + data.value.joke + "</div>" +
+        "    </li>";
+
+        $(".chatBox ul").append(htmlStr);
+    }
     // console.log("jokeText => " + jokeText);
     // return jokeText;
-
-  $.ajax({
-      url: myUrl,
-      crossDomain: true,
-      dataType: "json",
-      success: function(data) {
-        console.log(data.value.joke);
-        jokeText = data.value.joke;
-        console.log(jokeText);
-        return jokeText;
-      },
-      error: function(errormessage) {
-        return "I can not think of joke right now...";
-      }
-  });
-  console.log(jokeText);
-  return jokeText;
 }
+
+
+//   $.ajax({
+//       url: myUrl,
+//       crossDomain: true,
+//       dataType: "json",
+//       success: function(data) {
+//         console.log(data.value.joke);
+//         jokeText = data.value.joke;
+//         console.log(jokeText);
+//         return jokeText;
+//       },
+//       error: function(errormessage) {
+//         return "I can not think of joke right now...";
+//       }
+//   });
+//   console.log(jokeText);
+//   return jokeText;
+// }
 
 //try number 1
 // $.ajax({

@@ -3,7 +3,7 @@ $(function () {
 
 // console.log(getJokes());
 
-var jokeText = "";
+// var jokeText = "";
 
   new Vue({
     el: '.chatBox',
@@ -20,17 +20,18 @@ var jokeText = "";
         if (textArray) {
           switch (textArray[0]) {
             case ("@joke"):
-              this.inputMsgs.push({ text: "You asked for a joke!" }, { text: getJokes() });
+              this.inputMsgs.push({ text: "You asked for a joke!" });
               this.newChatMsg = '';
+              getJokes();
             break;
             case ("@piglatin"):
               this.inputMsgs.push({ text: pigLatein(textArray[1]) });
               this.newChatMsg = '';
             break;
             case ("@weather"):
-              console.log(getWeather());
-              this.inputMsgs.push({ text: "You asked for the weather!" }, { text: getWeather() });
+              this.inputMsgs.push({ text: "You asked for the weather!" });
               this.newChatMsg = '';
+              getWeather();
             break;
             default:
               this.inputMsgs.push({ text: "Try again!  I don't understand." });
