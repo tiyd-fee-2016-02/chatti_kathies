@@ -1,19 +1,39 @@
-function getJokes() {
+function getJokes(str) {
 
+    // var jokeText = "xyz";
+    jokeText = "xyz";
 
+    var myUrl = "http://api.icndb.com/jokes/random";
 
-  var str = "Yes!!!";
+    // $.getJSON(myUrl, getInfo);
+    //
+    // function getInfo(data) {
+    //   console.log("data => " + data);
+    //   console.log("data.value.joke => " + data.value.joke);
+    //   jokeText = data.value.joke;
+    //   console.log("jokeText => " + jokeText);
+    //   return jokeText = data.value.joke;
+    // }
+    // console.log("jokeText => " + jokeText);
+    // return jokeText;
 
-// Working API URLs
-  // var myUrl = "http://api.github.com/users/octocat";
-  // var myUrl = "http://api.openweathermap.org/data/2.5/forecast/daily?" +
-  //               "id=4464368" +    // Durham, NC, US
-  //               "&cnt=1" +        // 1 record from 5 Day, 3 Hour Forecast
-  //               "&APPID=82f61d5df7730f4b96d58ed8e8aa6b63";
-
-// Broken API URLs
-  var myUrl = "http://tambal.azurewebsites.net/joke/random";
-// var myUrl = "https://getpuns.herokuapp.com/api/random";
+  $.ajax({
+      url: myUrl,
+      crossDomain: true,
+      dataType: "json",
+      success: function(data) {
+        console.log(data.value.joke);
+        jokeText = data.value.joke;
+        console.log(jokeText);
+        return jokeText;
+      },
+      error: function(errormessage) {
+        return "I can not think of joke right now...";
+      }
+  });
+  console.log(jokeText);
+  return jokeText;
+}
 
 //try number 1
 // $.ajax({
@@ -30,14 +50,6 @@ function getJokes() {
 //     console.log(data);
 //     }
 // });
-
-  // $.getJSON((myUrl), function (data) {
-  //
-  //   console.log(data.joke);
-  //   console.log(data);
-  //
-  // });    end JSON call
-
 
 // try number 2
   // $.ajax({
@@ -64,9 +76,6 @@ function getJokes() {
 
   // });   end JSON call
 
-
-  return str;
-}
 
 // curl --get --include 'http://tambal.azurewebsites.net/joke/random' \
 //   -H 'Accept: application/json'
