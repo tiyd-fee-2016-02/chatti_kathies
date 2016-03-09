@@ -24,6 +24,8 @@ var telString;
 		}
 	});
 
+  console.log(telString);
+
   $.ajax({
 		url: 'http://www.frengly.com/',
 		data: {
@@ -41,6 +43,8 @@ var telString;
 			return "We couldn't translate that for you. Es tut uns Leid!";
 		}
 	});
+
+  console.log(telString);
 
   $.ajax({
 		url: 'http://www.frengly.com/',
@@ -60,6 +64,8 @@ var telString;
 		}
 	});
 
+  console.log(telString);
+
   $.ajax({
 		url: 'http://www.frengly.com/',
 		data: {
@@ -77,6 +83,8 @@ var telString;
 			return "We couldn't translate that for you. Es tut uns Leid!";
 		}
 	});
+
+  console.log(telString);
 
   $.ajax({
 		url: 'http://www.frengly.com/',
@@ -96,6 +104,8 @@ var telString;
 		}
 	});
 
+  console.log(telString);
+
   $.ajax({
 		url: 'http://www.frengly.com/',
 		data: {
@@ -113,6 +123,8 @@ var telString;
 			return "We couldn't translate that for you. Es tut uns Leid!";
 		}
 	});
+
+  console.log(telString);
 
   $.ajax({
 		url: 'http://www.frengly.com/',
@@ -132,4 +144,6 @@ var telString;
 		}
 	});
 
-});
+  return telString;
+
+};

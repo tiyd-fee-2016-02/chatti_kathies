@@ -35,6 +35,11 @@ $(function () {
               this.newChatMsg = '';
               getWeather();
             break;
+            case("@telephone"):
+              textArray.shift();
+              this.inputMsgs.push({ text: 'Time to play Telephone. You typed in ' + textArray.join(" ") + '.'}, { text: translate(textArray.join(" ")) });
+              this.newChatMsg = '';
+              break;
             default:
               this.inputMsgs.push({ text: "Try again!  I don't understand." });
               this.newChatMsg = '';
