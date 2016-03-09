@@ -25,7 +25,9 @@ $(function () {
               getJokes();
             break;
             case ("@piglatin"):
-              this.inputMsgs.push({ text: pigLatein(textArray[1]) });
+              textArray.shift();
+              console.log(textArray);
+              this.inputMsgs.push({ text: "Okay. Erehay isyay omesay Igpay Atinlay" }, { text: pigLatein(textArray.join(" ")) });
               this.newChatMsg = '';
             break;
             case ("@weather"):
