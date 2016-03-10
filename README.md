@@ -5,7 +5,7 @@ This repo contains Denny and Jeremy's Chatti project
 
 Jeremy did the pig latin translator function and modified app.js to call to it correctly. He also created a new js file for our call to a a translation API with the first pass at an ajax call within it
 
-Dennis updated the file `app.js` to handle two commands `@weather` and `@joke` and created functions to pull the corresponding API data in two new files `jokes.js` and `weather.js`.
+Dennis updated the file `app.js` to handle two commands `@weather` and `@joke` and created functions to pull the corresponding API data in two new files `jokes.js` and `weather.js`
 
 We spent all of Monday and most of Tuesday trouble shooting Vue and CORS issues with little progress  =o.o=
 
