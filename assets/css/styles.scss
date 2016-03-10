@@ -1,11 +1,18 @@
-$fontSize: 50px;
-$fontSizeInput: 25px;
+$fontSize: 48px;
+$fontSizeInput: 48px;
 $fontFamily: "Montserrat", sans-serif;
 
 body {
   font: {
     size: $fontSize;
     family: $fontFamily;
+  }
+  background-color: #D1E0EA;
+  padding:{
+    top: 10px;
+    right: 5px;
+    left: 5px;
+    bottom: 50px;
   }
 }
 
@@ -19,7 +26,7 @@ body {
 .chatList {
   overflow: hidden;
   position: absolute;
-  bottom: 46px;
+  bottom: 56px;
   width: 100%;
 }
 
@@ -28,7 +35,24 @@ body {
   bottom: 0px;
   left: 0px;
   width: 100%;
-  height: 40px;
-  border: solid 2px red;
+  height: 65px;
+  padding-left: 10px;
+  border: solid 2px black;
+  border-radius: 3px;
   font-size: $fontSizeInput;
+  outline: none;
+}
+
+.botText {
+  text-align: right ;
+  color: grey;
+  padding: 10px 0px 10px 100px;
+}
+
+.userText {
+  text-align: left;
+}
+
+.frenchTrans .germanTrans .hungryTrans {
+  // display: none;
 }

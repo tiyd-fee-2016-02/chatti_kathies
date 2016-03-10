@@ -20,7 +20,7 @@ function getWeather(str) {
       // console.log(value);
       // console.log(value.response.error);
       if (value.response.error !== undefined) {
-        $(".chatList").append('<li class="userText"><div>' + str + '</div></li>');
+        $(".chatList").append('<li class="botText"><div>' + str + '</div></li>');
         $(".chatList").append("<li class='botText'><div>" + errorMsg + "</div></li>");
         $(".chatField").value = '';
         console.log("ERROR => getWeather() => " + value.response.error.type);
