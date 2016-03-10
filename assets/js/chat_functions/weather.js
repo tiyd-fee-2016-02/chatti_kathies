@@ -1,61 +1,46 @@
-function getWeather() {
+function getWeather(str) {
 
-  var weatherText = "";
+  var htmlStr = "";
+  var windStr = "";
+  var apiURL = "";
+  var cityStr = "";
+  var locationStr = "";
+  var errorMsg = "What?!?  I don't understand!";
 
-  var apiURL = "http://api.openweathermap.org/data/2.5/forecast/daily?" +
-                  "id=4464368" +    // Durham, NC, US
-                  "&cnt=1" +        // 1 record from 5 Day, 3 Hour Forecast
-                  "&APPID=82f61d5df7730f4b96d58ed8e8aa6b63";
+  if (str !== undefined && str.length > 5 && str.indexOf(", ") >= 0) {
 
-  $.getJSON((apiURL), function (value) {
+    cityStr = str.split(", ")[0].replace(" ","_");
+    locationStr = str.split(", ")[1].toUpperCase();
+    apiURL += "http://api.wunderground.com/api/bb07f40ea899d427/conditions/q/" +
+              locationStr +  "/" + cityStr + ".json";
 
     console.log(apiURL);
-    console.log(value);
 
-    var myUserTemp = _.template("<%- m.name %> "
-                              + "<%- m.date %> "
-                              + "<%- m.count %> "
-                              + "<%- m.dayTemp %> "
-                              + "<%- m.minTemp %> "
-                              + "<%- m.maxTemp %> "
-                              + "<%- m.pressure %> "
-                              + "<%- m.humity %> "
-                              + "<%- m.weatherType %> "
-                              + "<%- m.weatherDesc %> ", {variable: "m"});
-
-    // console.log(myUserTemp({ name: value.city.name }));
-    // console.log(myUserTemp({ name: value.list[0].dt }));
-    // console.log(myUserTemp({ name: value.cnt }));
-    // console.log(myUserTemp({ name: value.list[0].temp.min }));
-    // console.log(myUserTemp({ name: value.list[0].temp.max }));
-    // console.log(myUserTemp({ name: value.list[0].temp.day }));
-    // console.log(myUserTemp({ name: value.list[0].pressure }));
-    // console.log(myUserTemp({ name: value.list[0].humidity }));
-    // console.log(myUserTemp({ name: value.list[0].weather[0].main }));
-    // console.log(myUserTemp({ name: value.list[0].weather[0].description }));
-
-    // var minTemp = myUserTemp({ name: value.list[0].temp.min});
-    // $(".minTemp").html(parseInt(minTemp.split(".")[1], 10) + "&deg;F");
-    // var maxTemp = myUserTemp({ name: value.list[0].temp.max});
-    // $(".maxTemp").html(parseInt(maxTemp.split(".")[1], 10) + "&deg;F");
-    var dayTemp = myUserTemp({ name: value.list[0].temp.day});
-    // $(".dayTemp").html(parseInt(dayTemp.split(".")[1], 10) + "&deg;F");
-    // var pressure = myUserTemp({ name: value.list[0].pressure});
-    // $(".pressure").html(pressure.split(".")[1]+ "hPa");
-    // $(".humidity").html(myUserTemp({ name: value.list[0].humidity}) + "%");
-    // $(".weatherType").html(myUserTemp({ name: value.list[0].weather[0].main}));
-    // $(".weatherDesc").html(myUserTemp({ name: value.list[0].weather[0].description}));
-
-    weatherText = parseInt(dayTemp.split(".")[1], 10) + "&deg;F";
-    console.log(weatherText);
-
-    var htmlStr =
-      "    <li class='botText'>" +
-      "      <div>The current temperature is " + weatherText + ".</div>" +
-      "    </li>";
-
-      $(".chatBox ul").append(htmlStr);
-
-    // return weatherText;
-  });   // end JSON
+    $.getJSON(apiURL, function (value) {
+      // console.log(value);
+      // console.log(value.response.error);
+      if (value.response.error !== undefined) {
+        $(".chatList").append('<li class="userText"><div>' + str + '</div></li>');
+        $(".chatList").append("<li class='botText'><div>" + errorMsg + "</div></li>");
+        $(".chatField").value = '';
+        console.log("ERROR => getWeather() => " + value.response.error.type);
+      } else {
+        htmlStr +=
+          "    <li class='botText'>\n      <div>" +
+          "Right now in " + value.current_observation.display_location.full + "...<br>" +
+          "The current temperature is " + value.current_observation.temperature_string +
+          " and conditions are " + value.current_observation.weather;
+        windStr += value.current_observation.wind_string
+        if ( windStr !== "NA" && windStr.length > 0 ) {
+          htmlStr += " with winds " + windStr.charAt(0).toLowerCase() + windStr.slice(1);
+        }
+        htmlStr += "</div>\n    </li>"
+      }
+      console.log(htmlStr);
+      $(".chatList").append(htmlStr);
+    });   // end JSON
+  } else {
+    htmlStr += "    <li class='botText'>\n      <div>" + errorMsg + "</div>\n    </li>";
+  }
+  $(".chatList").append(htmlStr);
 }

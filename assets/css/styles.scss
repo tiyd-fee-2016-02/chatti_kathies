@@ -9,6 +9,20 @@ body {
   }
 }
 
+.chatBox {
+  overflow: auto;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.chatList {
+  overflow: hidden;
+  position: absolute;
+  bottom: 46px;
+  width: 100%;
+}
+
 #chatField {
   position:fixed;
   bottom: 0px;
