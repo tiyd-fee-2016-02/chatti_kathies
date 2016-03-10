@@ -7,6 +7,13 @@ body {
     size: $fontSize;
     family: $fontFamily;
   }
+  background-color: #D1E0EA;
+  padding:{
+    top: 10px;
+    right: 5px;
+    left: 5px;
+    bottom: 50px;
+  }
 }
 
 #chatField {
@@ -14,9 +21,12 @@ body {
   bottom: 0px;
   left: 0px;
   width: 100%;
-  height: 40px;
+  height: 45px;
+  padding-left: 10px;
   border: solid 2px black;
+  border-radius: 3px;
   font-size: $fontSizeInput;
+  outline: none;
 }
 
 .botText {
@@ -26,4 +36,8 @@ body {
 
 .userText {
   text-align: left;
+}
+
+.frenchTrans .germanTrans .hungryTrans {
+  // display: none;
 }

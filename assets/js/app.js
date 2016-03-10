@@ -29,8 +29,23 @@ $(function () {
             $(".chatList").append('<li class="botText"><div>Time to play Telephone. You typed in "'+textArray.join(" ")+'"</div></li>');
             translate(textArray.join(" "));
             setTimeout(function() {
-              console.log($(".frenchTrans").text());
-            }, 2000);  
+              var frenchText = $(".frenchTrans").text();
+              setTimeout(function() {
+                translate2(frenchText);
+                setTimeout(function() {
+                  var germanText = $(".germanTrans").text();
+                  setTimeout(function(){
+                    translate3(germanText);
+                    setTimeout(function(){
+                      var hungryText = $(".hungryTrans").text();
+                      setTimeout(function(){
+                        translate4(hungryText);
+                      }, 3000);
+                    }, 5000);
+                  }, 3000);
+                }, 5000);
+              }, 3000);
+            }, 5000);
             this.value = '';
             break;
           default:

@@ -17,8 +17,7 @@ $.ajax({
 		password: 'password'
 	},
 	success: function(data){
-    console.log(data.translation);
-    telString = data.translation;
+    // console.log("french version: " + data.translation);
     $(".chatList").append('<li class="botText frenchTrans"><div>'+data.translation+'</div></li>');
 	},
 	error: function (errormessage) {

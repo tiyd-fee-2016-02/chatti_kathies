@@ -15,7 +15,7 @@ function getJokes(str) {
       // return jokeText = data.value.joke;
 
       var htmlStr =
-        "    <li>" +
+        "    <li class='botText'>" +
         "      <div>" + data.value.joke + "</div>" +
         "    </li>";
 
